@@ -1,30 +1,38 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import login from "@/views/login";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    path: "/login",
+    name: "login", //路由名称
+    component: login,
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
+    path: "/",
+    name: "layout",
+    redirect: "/xu",
+    component: () => import("@/components/layout"),
+    children: [
+      {
+        path: "/xu",
+        component: () => import("@/views/xu"),
+        meta: {
+          //用于诸如面包屑导航 需要获取路由对象里的数据 {{$route.meta.title}}
+          title: "序言",
+          father: "序言",
+        },
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes
+  mode: "hash", //不建议使用history 在Nginx会出现问题，刷新会出现404
+  base: process.env.BASE_URL, //默认路径是'/'
+  routes,
 });
 
 export default router;
