@@ -30,10 +30,10 @@ export default {
   bottom: 0;
   .AppMain {
     position: absolute;
-    top: 199px;
+    top: 181px;
     left: 0;
     right: 0;
-    bottom: 62px;
+    bottom: 0;
   }
 }
 </style>

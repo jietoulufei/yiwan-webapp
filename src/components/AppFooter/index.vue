@@ -64,10 +64,10 @@ export default {
   right: 0;
   background: #fff;
   .labelIcon {
-    font-size: 30px;
+    font-size: 26px;
   }
   .labelContext {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 </style>

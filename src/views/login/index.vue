@@ -2,24 +2,45 @@
   <div id="flexDiv">
     <div class="flex-container">
       <div class="imgDiv">
-        <img src="https://ae01.alicdn.com/kf/Hfce100ca995c4aaea43ae0d6bb3e1298T.png" alt />
+        <img
+          src="https://ae01.alicdn.com/kf/Hfce100ca995c4aaea43ae0d6bb3e1298T.png"
+          alt
+        />
         <h1 class="LoginTit">壹萬小時</h1>
       </div>
       <div class="buttonsDiv">
         <cube-button>手机号登录</cube-button>
         <cube-button :outline="true">密码登录</cube-button>
       </div>
+      <div class="regiseterContext">
+        <span>没有账号？</span>
+        <span>立即注册</span>
+      </div>
+
       <div class="footerDiv">
-        <p>其他登录方式</p>
+        <div class="other">
+          <span class="line"></span>
+          <span class="txt">其他登录方式</span>
+          <span class="line"></span>
+        </div>
         <div class="iconsDiv">
           <span>
-            <img src="https://ae01.alicdn.com/kf/H4a57e82ed636428c8ac407ee17224cbdi.png" alt />
+            <img
+              src="https://ae01.alicdn.com/kf/H4a57e82ed636428c8ac407ee17224cbdi.png"
+              alt
+            />
           </span>
           <span>
-            <img src="https://ae01.alicdn.com/kf/H99a7712880594c36a2e086f77eba03cdY.png" alt />
+            <img
+              src="https://ae01.alicdn.com/kf/H99a7712880594c36a2e086f77eba03cdY.png"
+              alt
+            />
           </span>
           <span>
-            <img src="https://ae01.alicdn.com/kf/H3498ae724fa648b8af4b70d7299c6810O.png" alt />
+            <img
+              src="https://ae01.alicdn.com/kf/H3498ae724fa648b8af4b70d7299c6810O.png"
+              alt
+            />
           </span>
         </div>
         <div class="footerText">
@@ -48,11 +69,12 @@ export default {
       },
       false
     );
-  }
+  },
 };
 </script>
 
 <style lang="less">
+@color: #409eff;
 #flexDiv {
   position: absolute;
   top: 0;
@@ -82,16 +104,38 @@ export default {
       }
     }
 
+    .regiseterContext {
+      font-size: 14px;
+      & span:nth-child(2) {
+        color: @color;
+      }
+    }
+
     .footerDiv {
-      font-size: 15px;
+      font-size: 12px;
       color: grey;
       position: absolute;
       left: 0;
       right: 0;
       bottom: 30px;
-      p {
-        padding: 20px 0;
+
+      // 横线
+      .other {
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        .line {
+          display: inline-block;
+          width: 50px;
+          border-top: 1px solid #ccc;
+        }
+        .txt {
+          color: #686868;
+          vertical-align: -5px;
+          padding: 0 10px;
+        }
       }
+
       .iconsDiv {
         display: flex;
         flex-flow: row nowrap;
@@ -108,8 +152,8 @@ export default {
         }
       }
       .footerText {
-        font-size: 12px;
-        padding-top: 15px;
+        font-size: 10px;
+        padding-top: 10px;
       }
     }
   }

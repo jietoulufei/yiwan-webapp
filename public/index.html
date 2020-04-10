@@ -10,7 +10,10 @@
     <!-- 华为自带浏览器（内核为腾讯X5）fixed底部定位被挡住，解决办法 强制全屏以及跟随浏览器设置【默认】  -->
     <meta name="x5-fullscreen" content="true" />
     <meta name="full-screen" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- 仿沉浸式状态(浏览器背景色，电池)样式设置，但意义不大，安卓和苹果手机必须安装指定Chrome浏览器且版本>39 -->
+    <meta name="theme-color" content="#4285f4" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#4285f4" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title>
       <%= htmlWebpackPlugin.options.isProd?"" :"开发模式：" %>一万小时
