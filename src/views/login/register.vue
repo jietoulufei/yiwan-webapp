@@ -98,7 +98,7 @@ export default {
   },
   mounted() {
     //初始化获取焦点
-    this.$refs.initFocus.focus();
+    //this.$refs.initFocus.focus();
   }
 };
 </script>

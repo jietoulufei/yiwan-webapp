@@ -7,7 +7,7 @@ import store from "./store";
 import "amfe-flexible";
 
 //权限拦截
-//import "./permission";
+import "./permission";
 
 // 开发环境 development, 生产环境 production
 // process.env.NODE_ENV 动态获取当前环境

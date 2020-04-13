@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { login, getUserInfo } from "@/api/login";
 export default {
   data() {
     return {
@@ -68,7 +69,31 @@ export default {
   methods: {
     submit() {
       if (this.isValidate) {
-        console.log("ok");
+        //验证通过
+        login(this.username, this.pwd).then(response => {
+          const { data } = response; // { data:data } = {response.data : XXXXX}
+          if (data.flag) {
+            //验证成功，通过token获取具体用户信息
+            getUserInfo(data.data.token).then(response => {
+              console.log("token-userinfo", response);
+              //1.保存 token验证 和 用户信息
+              localStorage.setItem("yiwan-webapp-token", data.data.token);
+              localStorage.setItem(
+                "yiwan-webapp-userinfo",
+                JSON.stringify(response.data.data)
+              );
+              const toast = this.$createToast({
+                time: 1000,
+                txt: "登录成功",
+                type: "correct",
+                mask: true
+              });
+              toast.show();
+              //跳转主页
+              this.$router.push("/");
+            });
+          }
+        });
       }
     }
   },
@@ -98,7 +123,7 @@ export default {
   },
   mounted() {
     //初始化获取焦点
-    this.$refs.initFocus.focus();
+    //this.$refs.initFocus.focus();
   }
 };
 </script>
