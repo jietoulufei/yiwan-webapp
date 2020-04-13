@@ -10,13 +10,16 @@
       </div>
       <div class="buttonsDiv">
         <cube-button>手机号登录</cube-button>
-        <cube-button :outline="true">密码登录</cube-button>
+        <cube-button :outline="true" @click="passwordLG">密码登录</cube-button>
       </div>
       <div class="regiseterContext">
-        <span>没有账号？</span>
-        <span>立即注册</span>
+        <span>
+          没有账号？
+        </span>
+        <span>
+          <router-link to="/register">立即注册</router-link>
+        </span>
       </div>
-
       <div class="footerDiv">
         <div class="other">
           <span class="line"></span>
@@ -59,7 +62,11 @@ export default {
 
   components: {},
 
-  methods: {},
+  methods: {
+    passwordLG() {
+      this.$router.push("/password");
+    }
+  },
   mounted() {
     //meta标签的user-scalable=0只能禁止双击缩放，所以此处需要禁止两手指缩放页面
     document.documentElement.addEventListener(
@@ -69,7 +76,7 @@ export default {
       },
       false
     );
-  },
+  }
 };
 </script>
 
@@ -106,7 +113,7 @@ export default {
 
     .regiseterContext {
       font-size: 14px;
-      & span:nth-child(2) {
+      & span:nth-child(2) a {
         color: @color;
       }
     }

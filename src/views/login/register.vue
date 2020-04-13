@@ -1,6 +1,6 @@
 <template>
   <div class="passwordLoginBox">
-    <h1>密码登录</h1>
+    <h1>账号注册</h1>
     <div class="inputs">
       <cube-input
         ref="initFocus"
