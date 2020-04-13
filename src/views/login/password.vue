@@ -27,7 +27,7 @@
       <span>验证码登录</span>
       <span>忘记密码?</span>
     </div>
-    <div class="footerText">
+    <div class="footerText" v-show="isShow">
       <div class="imgDiv">
         <img
           src="https://ae01.alicdn.com/kf/Hfce100ca995c4aaea43ae0d6bb3e1298T.png"
@@ -41,6 +41,7 @@
 
 <script>
 import { login, getUserInfo } from "@/api/login";
+import { listenWindowSize } from "@/utils/common";
 export default {
   data() {
     return {
@@ -60,7 +61,9 @@ export default {
         blurHidden: true
       },
       usernameValidate: false,
-      pwdValidate: false
+      pwdValidate: false,
+      docmHeightInit: document.documentElement.clientHeight, //浏览器屏幕初始高度
+      isShow: true
     };
   },
 
@@ -92,6 +95,14 @@ export default {
               //跳转主页
               this.$router.push("/");
             });
+          } else {
+            const toast = this.$createToast({
+              time: 1000,
+              txt: "登录失败",
+              type: "error",
+              mask: true
+            });
+            toast.show();
           }
         });
       }
@@ -124,6 +135,8 @@ export default {
   mounted() {
     //初始化获取焦点
     //this.$refs.initFocus.focus();
+    //当使用非PC端浏览器时候 监听屏幕高度
+    listenWindowSize(this, this.isShow, this.docmHeightInit);
   }
 };
 </script>
