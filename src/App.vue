@@ -10,7 +10,7 @@ export default {
     return {
       overTime: new Date().getTime(), // 最后一次点击的时间
       currentTime: new Date().getTime(), //当前时间
-      tOut: 1 * 60 * 1000 //超时时间10min
+      tOut: 10 * 60 * 1000 //超时时间10min
     };
   },
   created: function() {
