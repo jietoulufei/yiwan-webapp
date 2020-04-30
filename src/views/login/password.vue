@@ -7,7 +7,7 @@
         v-model="username"
         placeholder="请输入用户名"
         :clearable="clearUsername"
-        :maxlength="12"
+        :maxlength="18"
       >
       </cube-input>
     </div>
@@ -18,7 +18,7 @@
         :type="type"
         :eye="eye"
         :clearable="clearPassword"
-        :maxlength="12"
+        :maxlength="18"
       >
       </cube-input>
     </div>
@@ -98,7 +98,7 @@ export default {
           } else {
             const toast = this.$createToast({
               time: 1000,
-              txt: "登录失败",
+              txt: data.message,
               type: "error",
               mask: true
             });
@@ -117,7 +117,7 @@ export default {
   watch: {
     username(newV) {
       //控制输入长度
-      if (newV.length > 6) {
+      if (newV.length > 4) {
         this.usernameValidate = true;
       } else {
         this.usernameValidate = false;
@@ -125,7 +125,7 @@ export default {
     },
     pwd(newV) {
       //控制输入长度
-      if (newV.length > 6) {
+      if (newV.length > 4) {
         this.pwdValidate = true;
       } else {
         this.pwdValidate = false;
